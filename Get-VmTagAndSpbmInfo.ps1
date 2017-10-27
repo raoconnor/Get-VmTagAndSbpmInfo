@@ -6,11 +6,9 @@ Get-vm-details
     
 .Example
     ./Get-VmSPBMInfo.ps1
-
 #>
 
 
-	
 # Set file path, filename, date and time
 # This is my standard path, you should adjust as needed
 $filepath = "C:\PowerCLI\Output\"
@@ -37,16 +35,13 @@ Write-Output " "
 Write-host "please wait for script to finish, it may take a while...." -ForegroundColor Yellow
 $tag = get-tag $tags[$choice] 
 	
-	
-
 Write-Host $TagEntity.Tag.Name
-
 
 Write-Host "This will provide a list of storage based polices attached to virtual machines" -ForegroundColor Blue
 
 Write-Host "---------------------------------------------------------" -ForegroundColor DarkYellow
-Write-Host "Output will be saved to:"  								   -ForegroundColor Yellow
-Write-Host $filepath$filename-$date$time".csv"  					   -ForegroundColor White
+Write-Host "Output will be saved to:"  					-ForegroundColor Yellow
+Write-Host $filepath$filename-$date$time".csv"  		        -ForegroundColor White
 Write-Host "---------------------------------------------------------" -ForegroundColor DarkYellow
 
 # Create empty results array to hold values
@@ -83,12 +78,10 @@ foreach ($vm in $vms){
 
 		# Write array output to results 
 		$resultsarray += $resultObject		
-
 }
 
 # output to gridview
 $resultsarray | Out-GridView
-
 
 # export to csv 
 $resultsarray | Export-Csv $filepath$filename"-"$datacenter$cluster"-"$date$time".csv" -NoType
